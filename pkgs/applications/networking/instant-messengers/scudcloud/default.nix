@@ -1,16 +1,16 @@
-{ stdenv, fetchurl, makeWrapper, python3, python3Packages, sip }:
+{ stdenv, fetchurl, makeWrapper, python3, python3Packages, sip, unzip }:
 
 stdenv.mkDerivation rec {
   appName = "scudcloud";
   name    = "${appName}-${version}";
-  version = "1.0.56";
+  version = "pyqt5";
 
   src = fetchurl {
-    url = "https://github.com/raelgc/scudcloud/archive/v${version}.tar.gz";
-    sha256 = "b285c76281b3c30cd13b36f834ac25b20e1c57d4439560b77ea0897931842023";
+    url = "https://github.com/fooblahblah/scudcloud/archive/pyqt5.zip";
+    sha256 = "da88f580d192cb1a8bc07b9018de0265aba699c2d436c4e84516e9fb5b134d87";
   };
 
-  buildInputs = [ makeWrapper ];
+  buildInputs = [ makeWrapper unzip ];
 
 
   installPhase = ''
@@ -40,7 +40,7 @@ stdenv.mkDerivation rec {
     install -v -m755 scudcloud-1.0/${appName} $out/bin/${appName}
     
     wrapProgram $out/bin/${appName} \
-        --prefix PYTHONPATH : "$out/lib:${python3Packages.pyqt4}/lib/${python3.libPrefix}/site-packages:${sip}/lib/${python3.libPrefix}/site-packages:${python3Packages.dbus}/lib/${python3.libPrefix}/site-packages" \
+        --prefix PYTHONPATH : "$out/lib:${python3Packages.pyqt5}/lib/${python3.libPrefix}/site-packages:${sip}/lib/${python3.libPrefix}/site-packages:${python3Packages.dbus}/lib/${python3.libPrefix}/site-packages" \
         --prefix PATH : "${python3}/bin"
   '';
   
