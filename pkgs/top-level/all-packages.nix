@@ -15027,6 +15027,10 @@ let
 
   saneFrontends = callPackage ../applications/graphics/sane/frontends.nix { };
 
+  scudcloud = callPackage ../applications/networking/instant-messengers/scudcloud {
+    sip = python3Packages.sip_4_16;
+  };
+
   seafile-shared = callPackage ../misc/seafile-shared { };
 
   slock = callPackage ../misc/screensavers/slock { };
