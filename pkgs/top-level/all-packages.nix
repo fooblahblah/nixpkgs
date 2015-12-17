@@ -11270,6 +11270,8 @@ let
 
   constant-detune-chorus = callPackage ../applications/audio/constant-detune-chorus { };
 
+  corebird = callPackage ../applications/networking/instant-messengers/corebird { };
+  
   coriander = callPackage ../applications/video/coriander {
     inherit (gnome) libgnomeui GConf;
   };
